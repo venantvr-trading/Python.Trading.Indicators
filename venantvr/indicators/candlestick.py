@@ -40,11 +40,11 @@ class CandlestickIndicator(Indicator):
                     f"volume_confirmed={self.__volume_confirmed}")
 
     def evaluate_sell_condition(self) -> bool:
-        if not self.__is_enabled:
+        if not self.is_enabled:
             return False
         return self.__is_bearish and self.__volume_confirmed
 
     def evaluate_buy_condition(self) -> bool:
-        if not self.__is_enabled:
+        if not self.is_enabled:
             return False
         return self.__is_bullish and self.__volume_confirmed

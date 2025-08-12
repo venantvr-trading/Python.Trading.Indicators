@@ -36,11 +36,11 @@ class SuddenPriceDropIndicator(Indicator):
                     f"volume_confirmed={self.__volume_confirmed}")
 
     def evaluate_sell_condition(self) -> bool:
-        if not self.__is_enabled:
+        if not self.is_enabled:
             return False
         return self.__drop_detected and self.__volume_confirmed
 
     def evaluate_buy_condition(self) -> bool:
-        if not self.__is_enabled:
+        if not self.is_enabled:
             return False
         return not self.__drop_detected

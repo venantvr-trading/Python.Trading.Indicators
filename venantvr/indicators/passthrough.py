@@ -12,7 +12,7 @@ class PassThroughIndicator(Indicator):
         logger.warning("PassThroughIndicator used - no real analysis performed")
 
     def evaluate_sell_condition(self) -> bool:
-        return self.__is_enabled
+        return self.is_enabled
 
     def evaluate_buy_condition(self) -> bool:
-        return self.__is_enabled
+        return self.is_enabled

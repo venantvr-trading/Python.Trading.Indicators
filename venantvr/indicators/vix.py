@@ -34,11 +34,11 @@ class VIXIndicator(Indicator):
                     f"volume_confirmed={self.__volume_confirmed}")
 
     def evaluate_sell_condition(self) -> bool:
-        if not self.__is_enabled or self.__vix is None:
+        if not self.is_enabled or self.__vix is None:
             return False
         return self.__vix > self.__panic_threshold and self.__volume_confirmed
 
     def evaluate_buy_condition(self) -> bool:
-        if not self.__is_enabled or self.__vix is None:
+        if not self.is_enabled or self.__vix is None:
             return False
         return self.__vix < self.__panic_threshold - 5

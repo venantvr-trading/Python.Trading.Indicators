@@ -44,11 +44,11 @@ class RSIIndicator(Indicator):
         logger.info(f"RSI: {self.__rsi_values[-1]:.2f}" if self.__rsi_values else "RSI: None")
 
     def evaluate_sell_condition(self) -> bool:
-        if not self.__is_enabled or not self.__rsi_values:
+        if not self.is_enabled or not self.__rsi_values:
             return False
         return self.__rsi_values[-1] > self.__sell_threshold
 
     def evaluate_buy_condition(self) -> bool:
-        if not self.__is_enabled or not self.__rsi_values:
+        if not self.is_enabled or not self.__rsi_values:
             return False
         return self.__rsi_values[-1] < self.__buy_threshold
