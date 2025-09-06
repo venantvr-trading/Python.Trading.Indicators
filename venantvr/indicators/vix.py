@@ -15,7 +15,7 @@ class VIXIndicator(Indicator):
         self.__volume_confirmed = False
 
     def compute_indicator(self, candles: DataFrame):
-        if len(candles) < self.__period:
+        if len(candles) <= self.__period:  # Need at least period + 1 for returns calculation
             logger.warning("Not enough candles for VIXIndicator")
             self.__vix = None
             self.__volume_confirmed = False
@@ -24,21 +24,21 @@ class VIXIndicator(Indicator):
         closes = candles['close']
         returns = np.log(closes / closes.shift(1))
         volatility = returns.rolling(window=self.__period).std() * np.sqrt(252) * 100
-        self.__vix = volatility.iloc[-1] if not volatility.empty else None
+        self.__vix = volatility.iloc[-1] if not volatility.empty and not np.isnan(volatility.iloc[-1]) else None
 
         avg_volume = candles['volume'].iloc[-self.__period:-1].mean() if len(candles) > 1 else 0
         latest_volume = candles['volume'].iloc[-1]
-        self.__volume_confirmed = latest_volume > avg_volume * self.__volume_threshold if avg_volume > 0 else False
+        self.__volume_confirmed = bool(latest_volume > avg_volume * self.__volume_threshold) if avg_volume > 0 else False
 
-        logger.info(f"VIX: {self.__vix:.2f if self.__vix is not None else 'None'}, "
-                    f"volume_confirmed={self.__volume_confirmed}")
+        vix_str = f"{self.__vix:.2f}" if self.__vix is not None else "None"
+        logger.info(f"VIX: {vix_str}, volume_confirmed={self.__volume_confirmed}")
 
     def evaluate_sell_condition(self) -> bool:
         if not self.is_enabled or self.__vix is None:
             return False
-        return self.__vix > self.__panic_threshold and self.__volume_confirmed
+        return bool(self.__vix > self.__panic_threshold and self.__volume_confirmed)
 
     def evaluate_buy_condition(self) -> bool:
         if not self.is_enabled or self.__vix is None:
             return False
-        return self.__vix < self.__panic_threshold - 5
+        return bool(self.__vix < self.__panic_threshold - 5)

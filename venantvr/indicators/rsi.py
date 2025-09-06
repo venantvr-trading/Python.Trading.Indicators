@@ -30,9 +30,9 @@ class RSIIndicator(Indicator):
         avg_loss = sum(losses[:self.__period]) / self.__period
 
         rsi_values = []
-        for i in range(self.__period, len(closes) - 1):
-            avg_gain = (avg_gain * (self.__period - 1) + gains[i]) / self.__period
-            avg_loss = (avg_loss * (self.__period - 1) + losses[i]) / self.__period
+        for i in range(self.__period, len(closes)):
+            avg_gain = (avg_gain * (self.__period - 1) + gains[i-1]) / self.__period
+            avg_loss = (avg_loss * (self.__period - 1) + losses[i-1]) / self.__period
             if avg_loss == 0:
                 rsi = 100.0
             else:
@@ -46,9 +46,9 @@ class RSIIndicator(Indicator):
     def evaluate_sell_condition(self) -> bool:
         if not self.is_enabled or not self.__rsi_values:
             return False
-        return self.__rsi_values[-1] > self.__sell_threshold
+        return bool(self.__rsi_values[-1] > self.__sell_threshold)
 
     def evaluate_buy_condition(self) -> bool:
         if not self.is_enabled or not self.__rsi_values:
             return False
-        return self.__rsi_values[-1] < self.__buy_threshold
+        return bool(self.__rsi_values[-1] < self.__buy_threshold)

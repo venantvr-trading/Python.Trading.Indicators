@@ -23,12 +23,12 @@ class Indicator(ABC):
 
     def check_sell_condition(self) -> bool:
         if not self.is_enabled:
-            return True
+            return False  # Disabled indicators provide no signal
         return self.evaluate_sell_condition()
 
     def check_buy_condition(self) -> bool:
         if not self.is_enabled:
-            return True
+            return False  # Disabled indicators provide no signal  
         return self.evaluate_buy_condition()
 
     @abstractmethod

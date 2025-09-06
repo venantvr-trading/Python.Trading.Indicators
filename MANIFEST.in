@@ -1,0 +1,26 @@
+# Include package data
+include README.md
+include LICENSE
+include CHANGELOG.md
+include CONTRIBUTING.md
+include requirements.txt
+include requirements-dev.txt
+include requirements-test.txt
+
+# Include configuration files
+include pyproject.toml
+include pytest.ini
+include Makefile
+
+# Exclude development and build artifacts
+exclude .gitignore
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * *.orig
+recursive-exclude * *.rej
+recursive-exclude * .DS_Store
+recursive-exclude .git *
+recursive-exclude .idea *
+recursive-exclude .vscode *
+recursive-exclude build *
+recursive-exclude dist *
