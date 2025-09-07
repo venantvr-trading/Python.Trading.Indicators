@@ -167,10 +167,16 @@ make test
 
 ## 🔧 Development
 
-Set up the development environment:
+Install dependencies for development:
 
 ```bash
-make setup-dev
+make install
+```
+
+Update dependencies:
+
+```bash
+make update
 ```
 
 Code formatting:
@@ -179,10 +185,10 @@ Code formatting:
 make format
 ```
 
-Linting:
+Format and check code:
 
 ```bash
-make lint
+make format
 ```
 
 Run all quality checks:
