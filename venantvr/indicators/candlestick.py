@@ -5,7 +5,12 @@ from venantvr.indicators.tools.logger import logger
 
 
 class CandlestickIndicator(Indicator):
-    def __init__(self, lookback_period: int = 3, volume_threshold: float = 1.5, enabled: bool = True):
+    def __init__(
+            self,
+            lookback_period: int = 3,
+            volume_threshold: float = 1.5,
+            enabled: bool = True,
+    ):
         super().__init__(enabled)
         self.__lookback_period = lookback_period
         self.__volume_threshold = volume_threshold
@@ -22,8 +27,8 @@ class CandlestickIndicator(Indicator):
             return
 
         recent_candles = candles.tail(self.__lookback_period)
-        closes = recent_candles['close']
-        opens = recent_candles['open']
+        closes = recent_candles["close"]
+        opens = recent_candles["open"]
 
         # Check for bullish/bearish pattern (majority of recent candles)
         bullish_count = sum(1 for c, o in zip(closes, opens) if c > o)
@@ -33,21 +38,31 @@ class CandlestickIndicator(Indicator):
 
         # Volume confirmation
         if len(recent_candles) > 1:
-            avg_volume = recent_candles['volume'].iloc[:-1].mean()
-            latest_volume = recent_candles['volume'].iloc[-1]
-            self.__volume_confirmed = bool(latest_volume > avg_volume * self.__volume_threshold) if avg_volume > 0 else False
+            avg_volume = recent_candles["volume"].iloc[:-1].mean()
+            latest_volume = recent_candles["volume"].iloc[-1]
+            self.__volume_confirmed = (
+                bool(latest_volume > avg_volume * self.__volume_threshold)
+                if avg_volume > 0
+                else False
+            )
         else:
             # For single candle, we need historical data from the full candles to compare
             if len(candles) > 1:
-                avg_volume = candles['volume'].iloc[:-1].mean()
-                latest_volume = candles['volume'].iloc[-1]
-                self.__volume_confirmed = bool(latest_volume > avg_volume * self.__volume_threshold) if avg_volume > 0 else False
+                avg_volume = candles["volume"].iloc[:-1].mean()
+                latest_volume = candles["volume"].iloc[-1]
+                self.__volume_confirmed = (
+                    bool(latest_volume > avg_volume * self.__volume_threshold)
+                    if avg_volume > 0
+                    else False
+                )
             else:
                 # Only one candle total, can't confirm volume
                 self.__volume_confirmed = False
 
-        logger.info(f"Candlestick: bullish={self.__is_bullish}, bearish={self.__is_bearish}, "
-                    f"volume_confirmed={self.__volume_confirmed}")
+        logger.info(
+            f"Candlestick: bullish={self.__is_bullish}, bearish={self.__is_bearish}, "
+            f"volume_confirmed={self.__volume_confirmed}"
+        )
 
     def evaluate_sell_condition(self) -> bool:
         if not self.is_enabled:

@@ -18,7 +18,9 @@ class Indicator(ABC):
         if not self.is_enabled:
             return True
         else:
-            self.compute_indicator(candles)  # Call the specific indicator computation method
+            self.compute_indicator(
+                candles
+            )  # Call the specific indicator computation method
             return True  # Return True to indicate that calculation has been performed
 
     def check_sell_condition(self) -> bool:
@@ -28,7 +30,7 @@ class Indicator(ABC):
 
     def check_buy_condition(self) -> bool:
         if not self.is_enabled:
-            return False  # Disabled indicators provide no signal  
+            return False  # Disabled indicators provide no signal
         return self.evaluate_buy_condition()
 
     @abstractmethod

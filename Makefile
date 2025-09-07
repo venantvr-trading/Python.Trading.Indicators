@@ -1,86 +1,42 @@
-.PHONY: help install install-dev test test-coverage lint format clean build upload docs serve-docs
-.DEFAULT_GOAL := help
+.PHONY: help test clean format check install
 
-PYTHON := python3
-PIP := pip3
-PACKAGE_NAME := Python.Trading.Indicators
-TEST_DIR := tests
-DOCS_DIR := docs
+PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
+PIP := $(if $(wildcard .venv/bin/pip),.venv/bin/pip,pip3)
+SOURCES := venantvr
 
-help: ## Show this help message
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+# Default target
+help:
+	@echo "Available targets:"
+	@echo "  test      Run tests"
+	@echo "  format    Format code with black and isort"
+	@echo "  check     Run format and tests"
+	@echo "  clean     Clean up generated files"
+	@echo "  install   Install dependencies"
+	@echo "  update    Update dependencies"
 
-install: ## Install the package
-	$(PIP) install .
+# Testing
+test:
+	$(PYTHON) -m pytest tests/ -v --tb=short
 
-install-dev: ## Install package in development mode with dev dependencies
-	$(PIP) install -e .
-	$(PIP) install -r requirements-dev.txt
-	pre-commit install
+# Code formatting
+format:
+	$(PYTHON) -m black $(SOURCES) tests/
+	$(PYTHON) -m isort $(SOURCES) tests/
 
-test: ## Run tests
-	$(PYTHON) -m pytest $(TEST_DIR) -v
+# Combined check
+check: format test
 
-test-coverage: ## Run tests with coverage report
-	$(PYTHON) -m pytest $(TEST_DIR) --cov=venantvr --cov-report=term-missing --cov-report=html
+# Installation
+install:
+	$(PIP) install -e .[dev,test]
 
-lint: ## Run linting checks
-	$(PYTHON) -m flake8 venantvr $(TEST_DIR)
-	$(PYTHON) -m mypy venantvr
+# Updates
+update:
+	$(PIP) install --upgrade pip
+	$(PIP) install --upgrade -e .[dev,test]
 
-format: ## Format code with black
-	$(PYTHON) -m black venantvr $(TEST_DIR)
-
-format-check: ## Check code formatting without making changes
-	$(PYTHON) -m black --check venantvr $(TEST_DIR)
-
-clean: ## Clean up build artifacts and cache
-	rm -rf build/
-	rm -rf dist/
-	rm -rf *.egg-info/
-	rm -rf htmlcov/
-	rm -rf .coverage
-	rm -rf .pytest_cache/
-	find . -type d -name __pycache__ -delete
+# Clean up
+clean:
+	rm -rf build/ dist/ *.egg-info .pytest_cache/ .mypy_cache/
+	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete
-
-build: ## Build distribution packages
-	$(PYTHON) -m build
-
-upload: clean build ## Upload package to PyPI
-	$(PYTHON) -m twine upload dist/*
-
-upload-test: clean build ## Upload package to TestPyPI
-	$(PYTHON) -m twine upload --repository testpypi dist/*
-
-docs: ## Generate documentation
-	cd $(DOCS_DIR) && $(PYTHON) -m sphinx -b html . _build/html
-
-serve-docs: docs ## Serve documentation locally
-	cd $(DOCS_DIR)/_build/html && $(PYTHON) -m http.server 8000
-
-check: format-check lint test ## Run all checks (formatting, linting and tests)
-
-setup-dev: ## Setup development environment
-	$(PIP) install -e .
-	$(PIP) install -r requirements-dev.txt
-	pre-commit install
-	@echo "Development environment setup complete!"
-	@echo "Run 'make test' to verify everything is working."
-
-release-check: format-check lint test-coverage ## Run all pre-release checks
-	@echo "All checks passed! Ready for release."
-
-# Development workflow targets
-dev-test: ## Run tests in watch mode for development
-	$(PYTHON) -m pytest $(TEST_DIR) -v --tb=short -x
-
-quick-test: ## Run quick tests (no coverage)
-	$(PYTHON) -m pytest $(TEST_DIR) -x --tb=line
-
-# Quality gates
-pre-commit: ## Run pre-commit hooks on all files
-	pre-commit run --all-files
-
-quality-gate: format-check lint test-coverage ## Full quality gate for CI/CD
-	@echo "Quality gate passed!"

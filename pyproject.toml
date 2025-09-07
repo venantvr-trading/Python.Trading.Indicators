@@ -49,7 +49,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
-    "pytest-cov>=4.0.0",
     "black>=23.0.0",
     "flake8>=6.0.0",
     "mypy>=1.0.0",
@@ -62,7 +61,6 @@ docs = [
 ]
 test = [
     "pytest>=7.0.0",
-    "pytest-cov>=4.0.0",
     "pytest-xdist>=3.0.0"
 ]
 
@@ -143,29 +141,6 @@ filterwarnings = [
     "ignore::PendingDeprecationWarning"
 ]
 
-[tool.coverage.run]
-source = ["venantvr"]
-omit = [
-    "*/tests/*",
-    "*/test_*.py",
-    "*/.venv/*",
-    "*/venv/*",
-    "setup.py"
-]
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "if self.debug:",
-    "if settings.DEBUG",
-    "raise AssertionError",
-    "raise NotImplementedError",
-    "if 0:",
-    "if __name__ == .__main__.:",
-    "class .*\\bProtocol\\):",
-    "@(abc\\.)?abstractmethod"
-]
 
 [tool.flake8]
 max-line-length = 88
