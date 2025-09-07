@@ -44,7 +44,7 @@ make format
 
 ### Testing
 
-All contributions must include appropriate tests. We aim for high test coverage.
+All contributions must include appropriate tests.
 
 - Write unit tests for individual indicators
 - Write integration tests for indicator combinations
@@ -53,7 +53,6 @@ All contributions must include appropriate tests. We aim for high test coverage.
 Run tests:
 ```bash
 make test
-make test-coverage
 ```
 
 ### Adding New Indicators
@@ -148,7 +147,7 @@ feat: add MACD indicator with signal line crossover detection
 All contributions go through code review. Reviewers will check for:
 
 - Code quality and style
-- Test coverage
+- Test completeness
 - Documentation completeness
 - Performance implications
 - Security considerations

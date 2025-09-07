@@ -3,7 +3,6 @@
 [![PyPI version](https://badge.fury.io/py/Python.Trading.Indicators.svg)](https://badge.fury.io/py/Python.Trading.Indicators)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Coverage](https://codecov.io/gh/venantvr/Python.Trading.Indicators/branch/main/graph/badge.svg)](https://codecov.io/gh/venantvr/Python.Trading.Indicators)
 
 A comprehensive Python library for technical analysis indicators used in algorithmic trading. Built with performance and extensibility in mind, this library provides a suite of technical indicators with a clean, consistent API for analyzing market data and generating buy/sell signals.
 
@@ -11,7 +10,7 @@ A comprehensive Python library for technical analysis indicators used in algorit
 
 - **Modular Architecture**: Built around an abstract `Indicator` base class for consistency and extensibility
 - **Performance Optimized**: Efficient calculations using pandas and numpy
-- **Comprehensive Coverage**: RSI, VIX, Candlestick patterns, Price drops, and more
+- **Complete Indicator Suite**: RSI, VIX, Candlestick patterns, Price drops, and more
 - **Easy Integration**: Simple API for incorporating indicators into trading strategies
 - **Type Safety**: Full type hints for better development experience
 - **Extensible**: Easy to add custom indicators following the established patterns
@@ -160,11 +159,6 @@ Run the complete test suite:
 make test
 ```
 
-Run tests with coverage:
-
-```bash
-make test-coverage
-```
 
 ## 🔧 Development
 

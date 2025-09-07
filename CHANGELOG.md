@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sudden price drop detector
 - VIX (Volatility Index) indicator for panic detection
 - PassThrough utility indicator for testing
-- Comprehensive test suite with >90% coverage
+- Comprehensive test suite
 - Professional packaging with pyproject.toml
 - MIT License
 - Complete documentation and examples
@@ -42,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial project structure
 - Base `Indicator` abstract class
 - Core indicator implementations
-- Basic test coverage
+- Basic tests
 - French documentation (migrated to English in later versions)
 
 [Unreleased]: https://github.com/venantvr/Python.Trading.Indicators/compare/v0.1.0...HEAD
