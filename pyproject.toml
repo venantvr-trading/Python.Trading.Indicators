@@ -71,10 +71,8 @@ Issues = "https://github.com/venantvr/Python.Trading.Indicators/issues"
 Changelog = "https://github.com/venantvr/Python.Trading.Indicators/blob/main/CHANGELOG.md"
 Documentation = "https://Python.Trading.Indicators.readthedocs.io/"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["venantvr*"]
-exclude = ["tests*"]
+[tool.setuptools]
+packages = ["venantvr", "venantvr.indicators", "venantvr.indicators.tools"]
 
 [tool.setuptools.package-data]
 "*" = ["*.txt", "*.md"]
