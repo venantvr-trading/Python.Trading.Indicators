@@ -4,7 +4,8 @@
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-A comprehensive Python library for technical analysis indicators used in algorithmic trading. Built with performance and extensibility in mind, this library provides a suite of technical indicators with a clean, consistent API for analyzing market data and generating buy/sell signals.
+A comprehensive Python library for technical analysis indicators used in algorithmic trading. Built with performance and extensibility in mind, this library provides a
+suite of technical indicators with a clean, consistent API for analyzing market data and generating buy/sell signals.
 
 ## ✨ Features
 
@@ -66,6 +67,7 @@ if candlestick.check_buy_condition():
 ## 📊 Available Indicators
 
 ### RSI (Relative Strength Index)
+
 Identifies overbought and oversold conditions in the market.
 
 ```python
@@ -79,6 +81,7 @@ rsi = RSIIndicator(
 ```
 
 ### Candlestick Pattern Analyzer
+
 Analyzes recent candlestick patterns to determine bullish/bearish trends with volume confirmation.
 
 ```python
@@ -91,6 +94,7 @@ candlestick = CandlestickIndicator(
 ```
 
 ### Sudden Price Drop Detector
+
 Detects significant price drops that might indicate selling opportunities or rebounds.
 
 ```python
@@ -103,6 +107,7 @@ drop_detector = SuddenPriceDropIndicator(
 ```
 
 ### VIX (Volatility Index)
+
 Measures market volatility and identifies panic conditions.
 
 ```python
@@ -115,6 +120,7 @@ vix = VIXIndicator(
 ```
 
 ### PassThrough Indicator
+
 A utility indicator for testing or temporarily disabling indicator logic.
 
 ```python
@@ -158,7 +164,6 @@ Run the complete test suite:
 ```bash
 make test
 ```
-
 
 ## 🔧 Development
 
@@ -219,4 +224,5 @@ If you encounter any issues or have questions, please file an issue on the [GitH
 
 ---
 
-**Disclaimer**: This library is for educational and research purposes. Always do your own research before making any trading decisions. Past performance is not indicative of future results.
+**Disclaimer**: This library is for educational and research purposes. Always do your own research before making any trading decisions. Past performance is not indicative
+of future results.

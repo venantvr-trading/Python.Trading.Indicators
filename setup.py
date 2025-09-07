@@ -62,7 +62,7 @@ setup(
     keywords=[
         "trading",
         "technical-analysis",
-        "indicators", 
+        "indicators",
         "finance",
         "rsi",
         "candlestick",

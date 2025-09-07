@@ -7,7 +7,7 @@ name = "Python.Trading.Indicators"
 version = "0.1.0"
 description = "A comprehensive Python library for technical analysis indicators used in algorithmic trading"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 requires-python = ">=3.8"
 authors = [
     { name = "venantvr", email = "venantvr@gmail.com" },
@@ -17,7 +17,7 @@ maintainers = [
 ]
 keywords = [
     "trading",
-    "technical-analysis", 
+    "technical-analysis",
     "indicators",
     "finance",
     "rsi",
@@ -33,7 +33,7 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9", 
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -126,7 +126,7 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
     "--verbose",
-    "--tb=short", 
+    "--tb=short",
     "--strict-markers",
     "--disable-warnings",
     "--color=yes"
@@ -147,7 +147,7 @@ max-line-length = 88
 extend-ignore = ["E203", "E501", "W503"]
 exclude = [
     ".git",
-    "__pycache__", 
+    "__pycache__",
     "build",
     "dist",
     "*.egg-info",

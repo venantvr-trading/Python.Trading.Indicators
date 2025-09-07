@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Initial release of Python Trading Indicators library
 - RSI (Relative Strength Index) indicator with customizable thresholds
 - Candlestick pattern analyzer with volume confirmation
@@ -20,25 +21,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Complete documentation and examples
 
 ### Changed
+
 - Migrated from French to English documentation
 - Updated package name to `Python.Trading.Indicators`
 - Modernized build system using pyproject.toml
 
 ### Deprecated
+
 - None
 
 ### Removed
+
 - None
 
 ### Fixed
+
 - None
 
 ### Security
+
 - None
 
 ## [0.1.0] - 2024-09-06
 
 ### Added
+
 - Initial project structure
 - Base `Indicator` abstract class
 - Core indicator implementations
@@ -46,4 +53,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - French documentation (migrated to English in later versions)
 
 [Unreleased]: https://github.com/venantvr/Python.Trading.Indicators/compare/v0.1.0...HEAD
+
 [0.1.0]: https://github.com/venantvr/Python.Trading.Indicators/releases/tag/v0.1.0

@@ -33,11 +33,13 @@ We use several tools to maintain code quality:
 - **pytest** for testing
 
 Run all quality checks:
+
 ```bash
 make check
 ```
 
 Format your code:
+
 ```bash
 make format
 ```
@@ -51,6 +53,7 @@ All contributions must include appropriate tests.
 - Include edge cases and error conditions
 
 Run tests:
+
 ```bash
 make test
 ```
@@ -82,26 +85,26 @@ When adding a new technical indicator:
    ```
 
 2. **Follow naming conventions**:
-   - Use descriptive class names ending in `Indicator`
-   - Use private attributes with double underscore prefix
-   - Use type hints for all parameters
+    - Use descriptive class names ending in `Indicator`
+    - Use private attributes with double underscore prefix
+    - Use type hints for all parameters
 
 3. **Add comprehensive tests**:
-   - Create `tests/test_my_indicator.py`
-   - Test initialization, calculation, and conditions
-   - Test edge cases and error handling
+    - Create `tests/test_my_indicator.py`
+    - Test initialization, calculation, and conditions
+    - Test edge cases and error handling
 
 4. **Update documentation**:
-   - Add your indicator to the README.md
-   - Include usage examples
-   - Document all parameters
+    - Add your indicator to the README.md
+    - Include usage examples
+    - Document all parameters
 
 ### Commit Guidelines
 
 We follow conventional commits:
 
 - `feat:` for new features
-- `fix:` for bug fixes  
+- `fix:` for bug fixes
 - `docs:` for documentation changes
 - `test:` for test additions/changes
 - `refactor:` for code refactoring
@@ -109,6 +112,7 @@ We follow conventional commits:
 - `ci:` for CI/CD changes
 
 Example:
+
 ```
 feat: add MACD indicator with signal line crossover detection
 
@@ -137,10 +141,10 @@ feat: add MACD indicator with signal line crossover detection
 5. **Push to your fork** and create a pull request
 
 6. **Fill out the PR template** with:
-   - Description of changes
-   - Testing performed
-   - Documentation updates
-   - Breaking changes (if any)
+    - Description of changes
+    - Testing performed
+    - Documentation updates
+    - Breaking changes (if any)
 
 ### Code Review
 
