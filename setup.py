@@ -9,7 +9,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
     requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
 
 setup(
-    name="python-trading-indicators",
+    name="Python.Trading.Indicators",
     version="0.1.0",
     author="venantvr",
     author_email="venantvr@gmail.com",
@@ -20,7 +20,7 @@ setup(
     project_urls={
         "Bug Tracker": "https://github.com/venantvr/Python.Trading.Indicators/issues",
         "Repository": "https://github.com/venantvr/Python.Trading.Indicators.git",
-        "Documentation": "https://python-trading-indicators.readthedocs.io/",
+        "Documentation": "https://Python.Trading.Indicators.readthedocs.io/",
     },
     packages=find_packages(exclude=["tests*"]),
     classifiers=[

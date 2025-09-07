@@ -3,7 +3,7 @@
 
 PYTHON := python3
 PIP := pip3
-PACKAGE_NAME := venantvr
+PACKAGE_NAME := Python.Trading.Indicators
 TEST_DIR := tests
 DOCS_DIR := docs
 
@@ -15,23 +15,24 @@ install: ## Install the package
 
 install-dev: ## Install package in development mode with dev dependencies
 	$(PIP) install -e .
-	$(PIP) install pytest pytest-cov black flake8 mypy sphinx sphinx-rtd-theme
+	$(PIP) install -r requirements-dev.txt
+	pre-commit install
 
 test: ## Run tests
 	$(PYTHON) -m pytest $(TEST_DIR) -v
 
 test-coverage: ## Run tests with coverage report
-	$(PYTHON) -m pytest $(TEST_DIR) --cov=$(PACKAGE_NAME) --cov-report=term-missing --cov-report=html
+	$(PYTHON) -m pytest $(TEST_DIR) --cov=venantvr --cov-report=term-missing --cov-report=html
 
 lint: ## Run linting checks
-	$(PYTHON) -m flake8 $(PACKAGE_NAME) $(TEST_DIR)
-	$(PYTHON) -m mypy $(PACKAGE_NAME)
+	$(PYTHON) -m flake8 venantvr $(TEST_DIR)
+	$(PYTHON) -m mypy venantvr
 
 format: ## Format code with black
-	$(PYTHON) -m black $(PACKAGE_NAME) $(TEST_DIR)
+	$(PYTHON) -m black venantvr $(TEST_DIR)
 
 format-check: ## Check code formatting without making changes
-	$(PYTHON) -m black --check $(PACKAGE_NAME) $(TEST_DIR)
+	$(PYTHON) -m black --check venantvr $(TEST_DIR)
 
 clean: ## Clean up build artifacts and cache
 	rm -rf build/
@@ -58,9 +59,12 @@ docs: ## Generate documentation
 serve-docs: docs ## Serve documentation locally
 	cd $(DOCS_DIR)/_build/html && $(PYTHON) -m http.server 8000
 
-check: lint test ## Run all checks (linting and tests)
+check: format-check lint test ## Run all checks (formatting, linting and tests)
 
-setup-dev: install-dev ## Setup development environment
+setup-dev: ## Setup development environment
+	$(PIP) install -e .
+	$(PIP) install -r requirements-dev.txt
+	pre-commit install
 	@echo "Development environment setup complete!"
 	@echo "Run 'make test' to verify everything is working."
 
@@ -75,5 +79,8 @@ quick-test: ## Run quick tests (no coverage)
 	$(PYTHON) -m pytest $(TEST_DIR) -x --tb=line
 
 # Quality gates
+pre-commit: ## Run pre-commit hooks on all files
+	pre-commit run --all-files
+
 quality-gate: format-check lint test-coverage ## Full quality gate for CI/CD
 	@echo "Quality gate passed!"

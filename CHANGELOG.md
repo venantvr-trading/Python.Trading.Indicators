@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Migrated from French to English documentation
-- Updated package name to `python-trading-indicators`
+- Updated package name to `Python.Trading.Indicators`
 - Modernized build system using pyproject.toml
 
 ### Deprecated

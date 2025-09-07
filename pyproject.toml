@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python-trading-indicators"
+name = "Python.Trading.Indicators"
 version = "0.1.0"
 description = "A comprehensive Python library for technical analysis indicators used in algorithmic trading"
 readme = "README.md"
@@ -71,7 +71,7 @@ Homepage = "https://github.com/venantvr/Python.Trading.Indicators"
 Repository = "https://github.com/venantvr/Python.Trading.Indicators.git"
 Issues = "https://github.com/venantvr/Python.Trading.Indicators/issues"
 Changelog = "https://github.com/venantvr/Python.Trading.Indicators/blob/main/CHANGELOG.md"
-Documentation = "https://python-trading-indicators.readthedocs.io/"
+Documentation = "https://Python.Trading.Indicators.readthedocs.io/"
 
 [tool.setuptools.packages.find]
 where = ["."]
