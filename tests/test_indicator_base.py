@@ -12,15 +12,22 @@ class TestIndicatorImplementation(Indicator):
         self.computed = False
         self.buy_condition = False
         self.sell_condition = False
+        self._current_value = 0.0
 
     def compute_indicator(self, candles: DataFrame):
         self.computed = True
+        self._current_value = 1.0
 
     def evaluate_buy_condition(self) -> bool:
         return self.buy_condition
 
     def evaluate_sell_condition(self) -> bool:
         return self.sell_condition
+
+    @property
+    def current_value(self) -> float:
+        """Return the current test indicator value"""
+        return self._current_value
 
 
 class TestIndicatorBase:

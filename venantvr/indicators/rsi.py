@@ -60,3 +60,15 @@ class RSIIndicator(Indicator):
         if not self.is_enabled or not self.__rsi_values:
             return False
         return bool(self.__rsi_values[-1] < self.__buy_threshold)
+
+    @property
+    def current_value(self) -> float:
+        """Return the current RSI value"""
+        if not self.__rsi_values:
+            return 0.0
+        return self.__rsi_values[-1]
+
+    @property
+    def period(self) -> int:
+        """Return the RSI period"""
+        return self.__period

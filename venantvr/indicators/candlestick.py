@@ -73,3 +73,18 @@ class CandlestickIndicator(Indicator):
         if not self.is_enabled:
             return False
         return bool(self.__is_bullish and self.__volume_confirmed)
+
+    @property
+    def current_value(self) -> float:
+        """Return the current candlestick signal strength (1=bullish, -1=bearish, 0=neutral)"""
+        if self.__is_bullish and self.__volume_confirmed:
+            return 1.0
+        elif self.__is_bearish and self.__volume_confirmed:
+            return -1.0
+        else:
+            return 0.0
+
+    @property
+    def period(self) -> int:
+        """Return the candlestick lookback period"""
+        return self.__lookback_period

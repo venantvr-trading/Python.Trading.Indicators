@@ -65,3 +65,15 @@ class SuddenPriceDropIndicator(Indicator):
         if not self.is_enabled or self.__insufficient_data:
             return False
         return bool(not self.__drop_detected)
+
+    @property
+    def current_value(self) -> float:
+        """Return the current drop signal strength (1=drop detected, 0=no drop)"""
+        if self.__insufficient_data:
+            return 0.0
+        return 1.0 if (self.__drop_detected and self.__volume_confirmed) else 0.0
+
+    @property
+    def period(self) -> int:
+        """Return the drop detection lookback period"""
+        return self.__lookback_period

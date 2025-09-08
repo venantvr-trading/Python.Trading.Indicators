@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from pandas import DataFrame
 
@@ -44,5 +45,14 @@ class Indicator(ABC):
     def evaluate_buy_condition(self) -> bool:
         """
         Evaluate the buy condition based on the indicator's calculation.
+        """
+        pass
+
+    @property
+    @abstractmethod
+    def current_value(self) -> Optional[float]:
+        """
+        Return the current value of the indicator.
+        Must be implemented by all indicators.
         """
         pass

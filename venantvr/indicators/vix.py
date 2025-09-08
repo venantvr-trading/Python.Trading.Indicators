@@ -62,3 +62,15 @@ class VIXIndicator(Indicator):
         if not self.is_enabled or self.__vix is None:
             return False
         return bool(self.__vix < self.__panic_threshold - 5)
+
+    @property
+    def current_value(self) -> float:
+        """Return the current VIX value"""
+        if self.__vix is None:
+            return 0.0
+        return self.__vix
+
+    @property
+    def period(self) -> int:
+        """Return the VIX calculation period"""
+        return self.__period

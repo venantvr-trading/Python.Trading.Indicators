@@ -16,3 +16,8 @@ class PassThroughIndicator(Indicator):
 
     def evaluate_buy_condition(self) -> bool:
         return self.is_enabled
+
+    @property
+    def current_value(self) -> float:
+        """Return 1.0 if enabled, 0.0 if disabled"""
+        return 1.0 if self.is_enabled else 0.0
