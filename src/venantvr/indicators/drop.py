@@ -5,6 +5,7 @@ from venantvr.indicators.tools.logger import logger
 
 
 class SuddenPriceDropIndicator(Indicator):
+
     def __init__(
             self,
             drop_percentage: float = 5,

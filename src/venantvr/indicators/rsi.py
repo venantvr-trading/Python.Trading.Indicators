@@ -5,6 +5,7 @@ from venantvr.indicators.tools.logger import logger
 
 
 class RSIIndicator(Indicator):
+
     def __init__(
             self,
             period: int = 14,

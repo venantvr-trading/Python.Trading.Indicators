@@ -5,6 +5,7 @@ from venantvr.indicators.tools.logger import logger
 
 
 class CandlestickIndicator(Indicator):
+
     def __init__(
             self,
             lookback_period: int = 3,

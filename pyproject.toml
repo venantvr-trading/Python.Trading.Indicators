@@ -83,7 +83,7 @@ Documentation = "https://Python.Trading.Indicators.readthedocs.io/"
 
 [tool.setuptools]
 packages = ["venantvr", "venantvr.indicators", "venantvr.indicators.tools"]
-package-dir = {"" = "src"}
+package-dir = { "" = "src" }
 
 [tool.setuptools.package-data]
 "*" = ["*.txt", "*.md"]

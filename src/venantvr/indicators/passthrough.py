@@ -5,6 +5,7 @@ from venantvr.indicators.tools.logger import logger
 
 
 class PassThroughIndicator(Indicator):
+
     def __init__(self, enabled: bool = False):  # Disabled by default
         super().__init__(enabled)
 

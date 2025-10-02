@@ -6,6 +6,7 @@ from venantvr.indicators.tools.logger import logger
 
 
 class VIXIndicator(Indicator):
+
     def __init__(
             self,
             period: int = 14,

@@ -5,6 +5,7 @@ from pandas import DataFrame
 
 
 class Indicator(ABC):
+
     def __init__(self, enabled: bool = True):
         self.is_enabled = enabled
 
