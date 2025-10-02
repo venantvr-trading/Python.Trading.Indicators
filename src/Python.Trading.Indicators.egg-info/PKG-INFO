@@ -1,0 +1,301 @@
+Metadata-Version: 2.4
+Name: Python.Trading.Indicators
+Version: 0.1.0
+Summary: A comprehensive Python library for technical analysis indicators used in algorithmic trading
+Author-email: venantvr <venantvr@gmail.com>
+Maintainer-email: venantvr <venantvr@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2024 venantvr
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://github.com/venantvr/Python.Trading.Indicators
+Project-URL: Repository, https://github.com/venantvr/Python.Trading.Indicators.git
+Project-URL: Issues, https://github.com/venantvr/Python.Trading.Indicators/issues
+Project-URL: Changelog, https://github.com/venantvr/Python.Trading.Indicators/blob/main/CHANGELOG.md
+Project-URL: Documentation, https://Python.Trading.Indicators.readthedocs.io/
+Keywords: trading,technical-analysis,indicators,finance,rsi,candlestick,volatility,algorithmic-trading
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Office/Business :: Financial
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas>=1.5.0
+Requires-Dist: numpy>=1.21.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: build>=0.10.0; extra == "dev"
+Requires-Dist: twine>=4.0.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=5.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.2.0; extra == "docs"
+Provides-Extra: test
+Requires-Dist: pytest>=7.0.0; extra == "test"
+Requires-Dist: pytest-xdist>=3.0.0; extra == "test"
+Dynamic: license-file
+
+# Python Trading Indicators
+
+[![PyPI version](https://badge.fury.io/py/Python.Trading.Indicators.svg)](https://badge.fury.io/py/Python.Trading.Indicators)
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+A comprehensive Python library for technical analysis indicators used in algorithmic trading. Built with performance and extensibility in mind, this library provides a
+suite of technical indicators with a clean, consistent API for analyzing market data and generating buy/sell signals.
+
+## ✨ Features
+
+- **Modular Architecture**: Built around an abstract `Indicator` base class for consistency and extensibility
+- **Performance Optimized**: Efficient calculations using pandas and numpy
+- **Complete Indicator Suite**: RSI, VIX, Candlestick patterns, Price drops, and more
+- **Easy Integration**: Simple API for incorporating indicators into trading strategies
+- **Type Safety**: Full type hints for better development experience
+- **Extensible**: Easy to add custom indicators following the established patterns
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+pip install Python.Trading.Indicators
+```
+
+For development installation:
+
+```bash
+git clone https://github.com/venantvr/Python.Trading.Indicators.git
+cd Python.Trading.Indicators
+pip install -e .
+```
+
+### Basic Usage
+
+```python
+import pandas as pd
+from venantvr.indicators.rsi import RSIIndicator
+from venantvr.indicators.candlestick import CandlestickIndicator
+
+# Sample market data
+data = {
+    'close': [100, 102, 105, 103, 108, 115, 110, 109, 107, 102, 95],
+    'open': [98, 100, 102, 105, 103, 108, 115, 110, 109, 107, 102],
+    'volume': [1000, 1100, 1200, 900, 1500, 2500, 1800, 1000, 1100, 2200, 3000]
+}
+candles = pd.DataFrame(data)
+
+# RSI Indicator
+rsi = RSIIndicator(period=14, buy_threshold=30, sell_threshold=70)
+rsi.calculate(candles)
+
+if rsi.check_buy_condition():
+    print("🟢 RSI Buy signal detected")
+if rsi.check_sell_condition():
+    print("🔴 RSI Sell signal detected")
+
+# Candlestick Pattern Analysis
+candlestick = CandlestickIndicator(lookback_period=3)
+candlestick.calculate(candles)
+
+if candlestick.check_buy_condition():
+    print("🟢 Bullish candlestick pattern with volume confirmation")
+```
+
+## 📊 Available Indicators
+
+### RSI (Relative Strength Index)
+
+Identifies overbought and oversold conditions in the market.
+
+```python
+from venantvr.indicators.rsi import RSIIndicator
+
+rsi = RSIIndicator(
+    period=14,           # Calculation period
+    buy_threshold=30,    # Oversold threshold
+    sell_threshold=70    # Overbought threshold
+)
+```
+
+### Candlestick Pattern Analyzer
+
+Analyzes recent candlestick patterns to determine bullish/bearish trends with volume confirmation.
+
+```python
+from venantvr.indicators.candlestick import CandlestickIndicator
+
+candlestick = CandlestickIndicator(
+    lookback_period=3,    # Number of candles to analyze
+    volume_threshold=1.2  # Volume confirmation multiplier
+)
+```
+
+### Sudden Price Drop Detector
+
+Detects significant price drops that might indicate selling opportunities or rebounds.
+
+```python
+from venantvr.indicators.drop import SuddenPriceDropIndicator
+
+drop_detector = SuddenPriceDropIndicator(
+    drop_percentage=10,   # Minimum drop percentage
+    lookback_period=20   # Period to check for highest price
+)
+```
+
+### VIX (Volatility Index)
+
+Measures market volatility and identifies panic conditions.
+
+```python
+from venantvr.indicators.vix import VIXIndicator
+
+vix = VIXIndicator(
+    period=20,           # Calculation period
+    panic_threshold=25   # Volatility panic threshold
+)
+```
+
+### PassThrough Indicator
+
+A utility indicator for testing or temporarily disabling indicator logic.
+
+```python
+from venantvr.indicators.passthrough import PassThroughIndicator
+
+passthrough = PassThroughIndicator(enabled=False)
+```
+
+## 🏗️ Architecture
+
+All indicators inherit from the abstract `Indicator` base class, ensuring a consistent interface:
+
+```python
+from abc import ABC, abstractmethod
+from pandas import DataFrame
+
+class Indicator(ABC):
+    def __init__(self, enabled: bool = True):
+        self.is_enabled = enabled
+    
+    @abstractmethod
+    def compute_indicator(self, candles: DataFrame):
+        """Compute the indicator based on the provided candles."""
+        pass
+    
+    @abstractmethod
+    def evaluate_buy_condition(self) -> bool:
+        """Evaluate if buy conditions are met."""
+        pass
+    
+    @abstractmethod
+    def evaluate_sell_condition(self) -> bool:
+        """Evaluate if sell conditions are met."""
+        pass
+```
+
+## 🧪 Testing
+
+Run the complete test suite:
+
+```bash
+make test
+```
+
+## 🔧 Development
+
+Install dependencies for development:
+
+```bash
+make install
+```
+
+Update dependencies:
+
+```bash
+make update
+```
+
+Code formatting:
+
+```bash
+make format
+```
+
+Format and check code:
+
+```bash
+make format
+```
+
+Run all quality checks:
+
+```bash
+make check
+```
+
+## 📈 Performance Considerations
+
+- All indicators are optimized for pandas DataFrame operations
+- Calculations are vectorized where possible for better performance
+- Memory usage is minimized through efficient data handling
+- Suitable for both real-time and batch processing scenarios
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Support
+
+If you encounter any issues or have questions, please file an issue on the [GitHub repository](https://github.com/venantvr/Python.Trading.Indicators/issues).
+
+## 🔗 Links
+
+- **Repository**: https://github.com/venantvr/Python.Trading.Indicators
+- **PyPI Package**: https://pypi.org/project/Python.Trading.Indicators/
+- **Documentation**: https://Python.Trading.Indicators.readthedocs.io/
+
+---
+
+**Disclaimer**: This library is for educational and research purposes. Always do your own research before making any trading decisions. Past performance is not indicative
+of future results.
