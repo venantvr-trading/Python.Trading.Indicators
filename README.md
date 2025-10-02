@@ -36,8 +36,8 @@ pip install -e .
 
 ```python
 import pandas as pd
-from venantvr.indicators.rsi import RSIIndicator
-from venantvr.indicators.candlestick import CandlestickIndicator
+from python_trading_indicators.rsi import RSIIndicator
+from python_trading_indicators.candlestick import CandlestickIndicator
 
 # Sample market data
 data = {
@@ -71,7 +71,7 @@ if candlestick.check_buy_condition():
 Identifies overbought and oversold conditions in the market.
 
 ```python
-from venantvr.indicators.rsi import RSIIndicator
+from python_trading_indicators.rsi import RSIIndicator
 
 rsi = RSIIndicator(
     period=14,           # Calculation period
@@ -85,7 +85,7 @@ rsi = RSIIndicator(
 Analyzes recent candlestick patterns to determine bullish/bearish trends with volume confirmation.
 
 ```python
-from venantvr.indicators.candlestick import CandlestickIndicator
+from python_trading_indicators.candlestick import CandlestickIndicator
 
 candlestick = CandlestickIndicator(
     lookback_period=3,    # Number of candles to analyze
@@ -98,7 +98,7 @@ candlestick = CandlestickIndicator(
 Detects significant price drops that might indicate selling opportunities or rebounds.
 
 ```python
-from venantvr.indicators.drop import SuddenPriceDropIndicator
+from python_trading_indicators.drop import SuddenPriceDropIndicator
 
 drop_detector = SuddenPriceDropIndicator(
     drop_percentage=10,   # Minimum drop percentage
@@ -111,7 +111,7 @@ drop_detector = SuddenPriceDropIndicator(
 Measures market volatility and identifies panic conditions.
 
 ```python
-from venantvr.indicators.vix import VIXIndicator
+from python_trading_indicators.vix import VIXIndicator
 
 vix = VIXIndicator(
     period=20,           # Calculation period
@@ -124,7 +124,7 @@ vix = VIXIndicator(
 A utility indicator for testing or temporarily disabling indicator logic.
 
 ```python
-from venantvr.indicators.passthrough import PassThroughIndicator
+from python_trading_indicators.passthrough import PassThroughIndicator
 
 passthrough = PassThroughIndicator(enabled=False)
 ```

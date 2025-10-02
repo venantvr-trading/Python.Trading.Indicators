@@ -64,7 +64,7 @@ When adding a new technical indicator:
 
 1. **Inherit from the base `Indicator` class**:
    ```python
-   from venantvr.indicators.indicator import Indicator
+   from python_trading_indicators.indicator import Indicator
    
    class MyIndicator(Indicator):
        def __init__(self, param1: float = 10.0, enabled: bool = True):

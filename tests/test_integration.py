@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 
-from venantvr.indicators.candlestick import CandlestickIndicator
-from venantvr.indicators.drop import SuddenPriceDropIndicator
-from venantvr.indicators.passthrough import PassThroughIndicator
-from venantvr.indicators.rsi import RSIIndicator
-from venantvr.indicators.vix import VIXIndicator
+from python_trading_indicators.candlestick import CandlestickIndicator
+from python_trading_indicators.drop import SuddenPriceDropIndicator
+from python_trading_indicators.passthrough import PassThroughIndicator
+from python_trading_indicators.rsi import RSIIndicator
+from python_trading_indicators.vix import VIXIndicator
 
 
 class TestIndicatorIntegration:

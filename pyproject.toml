@@ -1,13 +1,16 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel", "build"]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "build",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Python.Trading.Indicators"
+name = "python_trading_indicators"
 version = "0.1.0"
 description = "A comprehensive Python library for technical analysis indicators used in algorithmic trading"
 readme = "README.md"
-license = { file = "LICENSE" }
 requires-python = ">=3.8"
 authors = [
     { name = "venantvr", email = "venantvr@gmail.com" },
@@ -23,7 +26,7 @@ keywords = [
     "rsi",
     "candlestick",
     "volatility",
-    "algorithmic-trading"
+    "algorithmic-trading",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -43,8 +46,11 @@ classifiers = [
 ]
 dependencies = [
     "pandas>=1.5.0",
-    "numpy>=1.21.0"
+    "numpy>=1.21.0",
 ]
+
+[project.license]
+file = "LICENSE"
 
 [project.optional-dependencies]
 dev = [
@@ -62,16 +68,16 @@ dev = [
     "sphinx>=5.0.0",
     "sphinx-rtd-theme>=1.2.0",
     "jupyter>=1.0.0",
-    "ipython>=8.0.0"
+    "ipython>=8.0.0",
 ]
 docs = [
     "sphinx>=5.0.0",
-    "sphinx-rtd-theme>=1.2.0"
+    "sphinx-rtd-theme>=1.2.0",
 ]
 test = [
     "pytest>=7.0.0",
     "pytest-xdist>=3.0.0",
-    "pytest-mock>=3.10.0"
+    "pytest-mock>=3.10.0",
 ]
 
 [project.urls]
@@ -82,30 +88,31 @@ Changelog = "https://github.com/venantvr/Python.Trading.Indicators/blob/main/CHA
 Documentation = "https://Python.Trading.Indicators.readthedocs.io/"
 
 [tool.setuptools]
-packages = ["venantvr", "venantvr.indicators", "venantvr.indicators.tools"]
-package-dir = { "" = "src" }
+packages = [
+    "python_trading_indicators",
+    "python_trading_indicators.tools",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
 
 [tool.setuptools.package-data]
-"*" = ["*.txt", "*.md"]
+"*" = [
+    "*.txt",
+    "*.md",
+]
 
-# Tool configurations
 [tool.black]
 line-length = 88
-target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-  # directories
-  \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | build
-  | dist
-)/
-'''
+target-version = [
+    "py38",
+    "py39",
+    "py310",
+    "py311",
+    "py312",
+]
+include = "\\.pyi?$"
+extend-exclude = "/(\n  # directories\n  \\.eggs\n  | \\.git\n  | \\.hg\n  | \\.mypy_cache\n  | \\.tox\n  | \\.venv\n  | build\n  | dist\n)/\n"
 
 [tool.mypy]
 python_version = "3.8"
@@ -129,31 +136,42 @@ disallow_incomplete_defs = false
 disallow_untyped_decorators = false
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
+testpaths = [
+    "tests",
+]
+python_files = [
+    "test_*.py",
+]
+python_classes = [
+    "Test*",
+]
+python_functions = [
+    "test_*",
+]
 addopts = [
     "--verbose",
     "--tb=short",
     "--strict-markers",
     "--disable-warnings",
-    "--color=yes"
+    "--color=yes",
 ]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
-    "unit: marks tests as unit tests"
+    "unit: marks tests as unit tests",
 ]
 filterwarnings = [
     "ignore::DeprecationWarning",
-    "ignore::PendingDeprecationWarning"
+    "ignore::PendingDeprecationWarning",
 ]
-
 
 [tool.flake8]
 max-line-length = 88
-extend-ignore = ["E203", "E501", "W503"]
+extend-ignore = [
+    "E203",
+    "E501",
+    "W503",
+]
 exclude = [
     ".git",
     "__pycache__",
@@ -161,5 +179,5 @@ exclude = [
     "dist",
     "*.egg-info",
     ".venv",
-    "venv"
+    "venv",
 ]

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from venantvr.indicators.vix import VIXIndicator
+from python_trading_indicators.vix import VIXIndicator
 
 
 # noinspection PyUnresolvedReferences

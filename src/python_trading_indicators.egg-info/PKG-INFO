@@ -1,5 +1,5 @@
 Metadata-Version: 2.4
-Name: Python.Trading.Indicators
+Name: python_trading_indicators
 Version: 0.1.0
 Summary: A comprehensive Python library for technical analysis indicators used in algorithmic trading
 Author-email: venantvr <venantvr@gmail.com>
@@ -52,17 +52,27 @@ Requires-Dist: pandas>=1.5.0
 Requires-Dist: numpy>=1.21.0
 Provides-Extra: dev
 Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-xdist>=3.0.0; extra == "dev"
+Requires-Dist: pytest-mock>=3.10.0; extra == "dev"
 Requires-Dist: black>=23.0.0; extra == "dev"
 Requires-Dist: flake8>=6.0.0; extra == "dev"
 Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: pre-commit>=3.0.0; extra == "dev"
 Requires-Dist: build>=0.10.0; extra == "dev"
 Requires-Dist: twine>=4.0.0; extra == "dev"
+Requires-Dist: wheel>=0.40.0; extra == "dev"
+Requires-Dist: setuptools>=61.0.0; extra == "dev"
+Requires-Dist: sphinx>=5.0.0; extra == "dev"
+Requires-Dist: sphinx-rtd-theme>=1.2.0; extra == "dev"
+Requires-Dist: jupyter>=1.0.0; extra == "dev"
+Requires-Dist: ipython>=8.0.0; extra == "dev"
 Provides-Extra: docs
 Requires-Dist: sphinx>=5.0.0; extra == "docs"
 Requires-Dist: sphinx-rtd-theme>=1.2.0; extra == "docs"
 Provides-Extra: test
 Requires-Dist: pytest>=7.0.0; extra == "test"
 Requires-Dist: pytest-xdist>=3.0.0; extra == "test"
+Requires-Dist: pytest-mock>=3.10.0; extra == "test"
 Dynamic: license-file
 
 # Python Trading Indicators
@@ -103,8 +113,8 @@ pip install -e .
 
 ```python
 import pandas as pd
-from venantvr.indicators.rsi import RSIIndicator
-from venantvr.indicators.candlestick import CandlestickIndicator
+from python_trading_indicators.rsi import RSIIndicator
+from python_trading_indicators.candlestick import CandlestickIndicator
 
 # Sample market data
 data = {
@@ -138,7 +148,7 @@ if candlestick.check_buy_condition():
 Identifies overbought and oversold conditions in the market.
 
 ```python
-from venantvr.indicators.rsi import RSIIndicator
+from python_trading_indicators.rsi import RSIIndicator
 
 rsi = RSIIndicator(
     period=14,           # Calculation period
@@ -152,7 +162,7 @@ rsi = RSIIndicator(
 Analyzes recent candlestick patterns to determine bullish/bearish trends with volume confirmation.
 
 ```python
-from venantvr.indicators.candlestick import CandlestickIndicator
+from python_trading_indicators.candlestick import CandlestickIndicator
 
 candlestick = CandlestickIndicator(
     lookback_period=3,    # Number of candles to analyze
@@ -165,7 +175,7 @@ candlestick = CandlestickIndicator(
 Detects significant price drops that might indicate selling opportunities or rebounds.
 
 ```python
-from venantvr.indicators.drop import SuddenPriceDropIndicator
+from python_trading_indicators.drop import SuddenPriceDropIndicator
 
 drop_detector = SuddenPriceDropIndicator(
     drop_percentage=10,   # Minimum drop percentage
@@ -178,7 +188,7 @@ drop_detector = SuddenPriceDropIndicator(
 Measures market volatility and identifies panic conditions.
 
 ```python
-from venantvr.indicators.vix import VIXIndicator
+from python_trading_indicators.vix import VIXIndicator
 
 vix = VIXIndicator(
     period=20,           # Calculation period
@@ -191,7 +201,7 @@ vix = VIXIndicator(
 A utility indicator for testing or temporarily disabling indicator logic.
 
 ```python
-from venantvr.indicators.passthrough import PassThroughIndicator
+from python_trading_indicators.passthrough import PassThroughIndicator
 
 passthrough = PassThroughIndicator(enabled=False)
 ```

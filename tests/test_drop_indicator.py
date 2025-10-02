@@ -1,6 +1,6 @@
 import pandas as pd
 
-from venantvr.indicators.drop import SuddenPriceDropIndicator
+from python_trading_indicators.drop import SuddenPriceDropIndicator
 
 
 # noinspection PyUnresolvedReferences

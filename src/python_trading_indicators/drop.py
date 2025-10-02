@@ -1,7 +1,7 @@
 from pandas import DataFrame
 
-from venantvr.indicators.indicator import Indicator
-from venantvr.indicators.tools.logger import logger
+from python_trading_indicators.indicator import Indicator
+from python_trading_indicators.tools.logger import logger
 
 
 class SuddenPriceDropIndicator(Indicator):

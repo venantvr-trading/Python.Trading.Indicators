@@ -1,6 +1,6 @@
 import pandas as pd
 
-from venantvr.indicators.candlestick import CandlestickIndicator
+from python_trading_indicators.candlestick import CandlestickIndicator
 
 
 # noinspection PyUnresolvedReferences

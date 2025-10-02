@@ -1,6 +1,6 @@
 import pandas as pd
 
-from venantvr.indicators.passthrough import PassThroughIndicator
+from python_trading_indicators.passthrough import PassThroughIndicator
 
 
 class TestPassThroughIndicator:
@@ -112,7 +112,7 @@ class TestPassThroughIndicator:
 
     def test_passthrough_inheritance(self):
         """Test that PassThroughIndicator properly inherits from Indicator"""
-        from venantvr.indicators.indicator import Indicator
+        from python_trading_indicators.indicator import Indicator
 
         passthrough = PassThroughIndicator()
         assert isinstance(passthrough, Indicator)

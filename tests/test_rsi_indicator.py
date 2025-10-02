@@ -1,6 +1,6 @@
 import pandas as pd
 
-from venantvr.indicators.rsi import RSIIndicator
+from python_trading_indicators.rsi import RSIIndicator
 
 
 # noinspection PyUnresolvedReferences

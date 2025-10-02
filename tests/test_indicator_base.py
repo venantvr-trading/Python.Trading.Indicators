@@ -1,7 +1,7 @@
 import pytest
 from pandas import DataFrame
 
-from venantvr.indicators.indicator import Indicator
+from python_trading_indicators.indicator import Indicator
 
 
 class TestIndicatorImplementation(Indicator):

@@ -12,7 +12,7 @@ Available Indicators:
 
 Example Usage:
     >>> import pandas as pd
-    >>> from venantvr.indicators.rsi import RSIIndicator
+    >>> from python_trading_indicators.rsi import RSIIndicator
     >>>
     >>> # Sample data
     >>> data = {'close': [100, 102, 105, 103, 108]}
