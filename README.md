@@ -232,3 +232,7 @@ If you encounter any issues or have questions, please file an issue on the [GitH
 
 **Disclaimer**: This library is for educational and research purposes. Always do your own research before making any trading decisions. Past performance is not indicative
 of future results.
+
+## Stack
+
+[![Stack](https://skillicons.dev/icons?i=py,git&theme=dark)](https://skillicons.dev)
